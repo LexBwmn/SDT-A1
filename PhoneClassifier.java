@@ -1,15 +1,18 @@
+import java.util.*;
+
 
 public interface PhoneClassifier {
     // defnition of vector (string)
-    String classify(double x, double y, double z);
+    String classify(double x, double y, double z, List<double[]> trainingData, List<String> labels);
+    
 } 
 
 
 // NN Classifer 
 class Nearest_Neighbour implements PhoneClassifier {
     @Override
-    public String classify(double x, double y, double z) {
-        // Some Code
+    public String classify(double x, double y, double z, List<double[]> trainingData, List<String> labels) {
+    
         return "Nearest Neighbour Classifier";
     }
 
@@ -18,10 +21,9 @@ class Nearest_Neighbour implements PhoneClassifier {
 // KNN Classifier 
 class K_Nearest_Neighbour implements PhoneClassifier {
     @Override
-    public String classify(double x, double y, double z) {
+    public String classify(double x, double y, double z, List<double[]> trainingData, List<String> labels) {
         // Some code 
-        return "Nearest Neighbour Classifier";
-
+        return "K Nearest Neighbour Classifier";
     }
 }
 
@@ -29,7 +31,7 @@ class K_Nearest_Neighbour implements PhoneClassifier {
 class Another_Classifier implements PhoneClassifier {
     // print that dummy classifer was used 
     @Override
-    public String classify(double x, double y, double z) {
+    public String classify(double x, double y, double z, List<double[]> trainingData, List<String> labels) {
         System.out.print("Dummy Classifier was used");
         return "Unknown";
     }
