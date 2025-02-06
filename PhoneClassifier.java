@@ -12,11 +12,28 @@ public interface PhoneClassifier {
 class Nearest_Neighbour implements PhoneClassifier {
     @Override
     public String classify(double x, double y, double z, List<double[]> trainingData, List<String> labels) {
-    
-        return "Nearest Neighbour Classifier";
+    	 double minDistance = Double.MAX_VALUE;
+         int nearestIndex = -1;
+
+         // Loop through training data to find the closest point
+         for (int i = 0; i < trainingData.size(); i++) {
+             double[] point = trainingData.get(i);
+             double distance = Math.sqrt(Math.pow(x - point[0], 2) +
+                                         Math.pow(y - point[1], 2) +
+                                         Math.pow(z - point[2], 2));
+
+             // Update nearest point if a closer one is found
+             if (distance < minDistance) {
+                 minDistance = distance;
+                 nearestIndex = i;
+             }
+         }
+         return (nearestIndex != -1) ? labels.get(nearestIndex) : "Unknown";
+  
     }
 
 }
+
 
 // KNN Classifier 
 class K_Nearest_Neighbour implements PhoneClassifier {
